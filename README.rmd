@@ -1,17 +1,18 @@
-**Statistical Inference Course Project (Part 2)**
+---
+output:
+  pdf_document: default
+  html_document:
+    keep_md: yes
+---
+**Example: Hypothesis Testing**
 
-Note: Code for this document available at https://github.com/robbinsr/siProjPart2.
+Note: Code for this document available at https://github.com/robbinsr/hypothesisTesting.
 
-**Instructions**
-
-1. Load the ToothGrowth data and perform some basic exploratory data analyses 
-2. Provide a basic summary of the data.
-3. Use confidence intervals and/or hypothesis tests to compare tooth growth by supp and dose. (Only use the techniques from class, even if there's other approaches worth considering)
-4. State your conclusions and the assumptions needed for your conclusions. 
+This example uses data from an experiement with guinea pigs. The primary question is whether subject's teeth grew more when they received Vitamin C from orange juice or as an ascorbic acid extract. The results of the analysis are inconclusive due to the small number of subjects. Details follow.
 
 **Executive Summary**
 
-The ToothGrowth data was captured during an experiment. The experiment captured tooth length information before and after vitamin C was administered to sixty guinea pigs. Vitamin C was provided using two differing delivery mechanisms (orange juice and absorbic acid) and three different dosage levels (0.5, 1, and 2 milligrams) to six different groups of ten subject guinea pigs. 
+The ToothGrowth data analyzed in this work was captured during an experiment. The experiment captured tooth length information before and after vitamin C was administered to sixty guinea pigs. Vitamin C was provided using two differing delivery mechanisms (orange juice and absorbic acid) and three different dosage levels (0.5, 1, and 2 milligrams) to six different groups of ten subject guinea pigs. 
 
 It is possible that the underlying populations of the samples of observations that varied by delivery mechanism (orange juice vs. ascorbic acid) are different in their tooth growth rates. However, this variation, as described by measurements collected and placed in this data set do not show a statistically significant difference in the growth rates, when compared by Vitamin C delivery method. 
 
@@ -80,177 +81,58 @@ Question 6: The results were the same as question 5, but the test indicated that
 </table>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br><br>
-<br>
-<br>
+
 
 **Appendix**
 
 1. Load the ToothGrowth data and perform some basic exploratory data analyses 
-
+```{r echo=FALSE}
+library(knitr); data(ToothGrowth); attach(ToothGrowth);
+unique(supp); unique(dose); pairs(len~supp+dose)
+#variances seem constant
 ```
-## [1] VC OJ
-## Levels: OJ VC
-```
-
-```
-## [1] 0.5 1.0 2.0
-```
-
-![](siProjPart2_files/figure-html/unnamed-chunk-1-1.png) 
 
 2. Provide a basic summary of the data.
-
-```
-##       len        supp         dose      
-##  Min.   : 4.20   OJ:30   Min.   :0.500  
-##  1st Qu.:13.07   VC:30   1st Qu.:0.500  
-##  Median :19.25           Median :1.000  
-##  Mean   :18.81           Mean   :1.167  
-##  3rd Qu.:25.27           3rd Qu.:2.000  
-##  Max.   :33.90           Max.   :2.000
+```{r echo=FALSE}
+summary(ToothGrowth)
 ```
 3. Use confidence intervals and/or hypothesis tests to compare tooth growth by supp and dose. (Only use the techniques from class, even if there's other approaches worth considering). 
 
-
+```{r echo=FALSE}
+VC<-subset(ToothGrowth,supp=="VC"); OJ<-subset(ToothGrowth,supp=="OJ")
+Zero.5<-subset(ToothGrowth,dose==0.5); One<-subset(ToothGrowth,dose==1.0)
+Two<-subset(ToothGrowth,dose==2.0)
+meanVC<-mean(VC$len); meanOJ<-mean(OJ$len)
+meanZero.5<-mean(Zero.5$len); meanOne<-mean(One$len); meanTwo<-mean(Two$len)
+```
 First Question &nbsp;&nbsp;|&nbsp; Null: meanOJ - meanVC =  0 &nbsp;&nbsp;|&nbsp; Alternative: Mean-OJ - Mean_VC != 0
-
-```r
+```{r}
 ojEqVc<-t.test(x=OJ$len,y=VC$len,var.equal=TRUE,conf.level=0.95,paired=FALSE,alternative=c("two.sided"))
 ojEqVc
 ```
-
-```
-## 
-## 	Two Sample t-test
-## 
-## data:  OJ$len and VC$len
-## t = 1.9153, df = 58, p-value = 0.06039
-## alternative hypothesis: true difference in means is not equal to 0
-## 95 percent confidence interval:
-##  -0.1670064  7.5670064
-## sample estimates:
-## mean of x mean of y 
-##  20.66333  16.96333
-```
 Second Question &nbsp;&nbsp;|&nbsp; Null: meanOJ - meanVC <=  0 &nbsp;&nbsp;|&nbsp; Alternative: meanOJ - meanVC >  0
-
-```r
+```{r}
 ojGtVc<-t.test(x=OJ$len,y=VC$len,var.equal=TRUE,conf.level=0.95,paired=FALSE,alternative=c("greater"))
 ojGtVc
 ```
-
-```
-## 
-## 	Two Sample t-test
-## 
-## data:  OJ$len and VC$len
-## t = 1.9153, df = 58, p-value = 0.0302
-## alternative hypothesis: true difference in means is greater than 0
-## 95 percent confidence interval:
-##  0.4708204       Inf
-## sample estimates:
-## mean of x mean of y 
-##  20.66333  16.96333
-```
 Third Question &nbsp;&nbsp;|&nbsp; Null: mean2 - mean1 =  0 &nbsp;&nbsp;|&nbsp; Alternative: Mean-2 - Mean_1 != 0
-
-```r
+```{r}
 twoEqOne<-t.test(x=Two$len,y=One$len,var.equal=TRUE,conf.level=0.95,paired=FALSE,alternative=c("two.sided"))
 twoEqOne
 ```
-
-```
-## 
-## 	Two Sample t-test
-## 
-## data:  Two$len and One$len
-## t = 4.9005, df = 38, p-value = 1.811e-05
-## alternative hypothesis: true difference in means is not equal to 0
-## 95 percent confidence interval:
-##  3.735613 8.994387
-## sample estimates:
-## mean of x mean of y 
-##    26.100    19.735
-```
 Fourth Question &nbsp;&nbsp;|&nbsp; Null: mean2 - mean1 <=  0 &nbsp;&nbsp;|&nbsp; Alternative: Mean-2 - Mean_1 > 0
-
-```r
+```{r}
 twoGtOne<-t.test(x=Two$len,y=One$len,var.equal=TRUE,conf.level=0.95,paired=FALSE,alternative=c("greater"))
 twoGtOne
 ```
-
-```
-## 
-## 	Two Sample t-test
-## 
-## data:  Two$len and One$len
-## t = 4.9005, df = 38, p-value = 9.054e-06
-## alternative hypothesis: true difference in means is greater than 0
-## 95 percent confidence interval:
-##  4.175196      Inf
-## sample estimates:
-## mean of x mean of y 
-##    26.100    19.735
-```
 Fifth Question &nbsp;&nbsp;|&nbsp; Null: mean-1 - mean-Zero.5 =  0 &nbsp;&nbsp;|&nbsp; Alternative: Mean-1 - Mean-Zero.5 != 0
-
-```r
+```{r}
 oneEqZero.5<-t.test(x=One$len,y=Zero.5$len,var.equal=TRUE,conf.level=0.95,paired=FALSE,alternative=c("two.sided"))
 oneEqZero.5
 ```
-
-```
-## 
-## 	Two Sample t-test
-## 
-## data:  One$len and Zero.5$len
-## t = 6.4766, df = 38, p-value = 1.266e-07
-## alternative hypothesis: true difference in means is not equal to 0
-## 95 percent confidence interval:
-##   6.276252 11.983748
-## sample estimates:
-## mean of x mean of y 
-##    19.735    10.605
-```
 Sixth Question &nbsp;&nbsp;|&nbsp; Null: mean-1 - mean-Zero.5 <=  0 &nbsp;&nbsp;|&nbsp; Alternative: Mean-1 - Mean-Zero.5 > 0
-
-```r
+```{r}
 oneGtZero.5<-t.test(x=One$len,y=Zero.5$len,var.equal=TRUE,conf.level=0.95,paired=FALSE,alternative=c("greater"))
 oneGtZero.5
-```
-
-```
-## 
-## 	Two Sample t-test
-## 
-## data:  One$len and Zero.5$len
-## t = 6.4766, df = 38, p-value = 6.331e-08
-## alternative hypothesis: true difference in means is greater than 0
-## 95 percent confidence interval:
-##  6.753344      Inf
-## sample estimates:
-## mean of x mean of y 
-##    19.735    10.605
 ```
 
