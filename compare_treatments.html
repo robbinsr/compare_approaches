@@ -61,21 +61,13 @@ img {
 
 
 
-<p><strong>Example: Hypothesis Testing</strong></p>
-<p>Note: Code for this document available at <a href="https://github.com/robbinsr/hypothesisTesting" class="uri">https://github.com/robbinsr/hypothesisTesting</a>.</p>
-<p>This example uses data from an experiement with guinea pigs. The primary question is whether subject’s teeth grew more when they received Vitamin C from orange juice or as an ascorbic acid extract. The results of the analysis are inconclusive due to the small number of subjects. Details follow.</p>
-<p><strong>Executive Summary</strong></p>
-<p>The ToothGrowth data analyzed in this work was captured during an experiment. The experiment captured tooth length information before and after vitamin C was administered to sixty guinea pigs. Vitamin C was provided using two differing delivery mechanisms (orange juice and absorbic acid) and three different dosage levels (0.5, 1, and 2 milligrams) to six different groups of ten subject guinea pigs.</p>
-<p>It is possible that the underlying populations of the samples of observations that varied by delivery mechanism (orange juice vs. ascorbic acid) are different in their tooth growth rates. However, this variation, as described by measurements collected and placed in this data set do not show a statistically significant difference in the growth rates, when compared by Vitamin C delivery method.</p>
-<p>However, it is entirely possible that the underlying populations of the samples of observations that varied by dosage levels (between 0.5 mm and 1 mm, as well as between 1 mm and 2 mm) varied in their tooth growth rates. Explicitly, it is entirely possible that guinnea pigs that are provided Vitamin C at 2 mm per dose have faster growing teeth then those given 1 mm per dose. This relationship also holds between guinea pigs with 1 mm vs. 005 mm dose amounts.</p>
-<p>Note that these results are tentative because of the following reason. The sample sizes, ten in any group, is very small. Larger sample sizes would have provided more information that could be relied upon to make stronger claims. While the possible error related to accepting the null hypotheses incorrectly (that there wasn’t a difference between any two groups) was considered, the possible error related to accepting the alternative hypothesis incorrectly, was not considered. It was not considered, because the standard method for addressing this risk, is increasing sample size. In this situation, the data was provided to I the analyst, and I did not have access to the experiment which occurred before 1952, which was fourteen years before I was born. Nonetheless, in an ideal world, I would have rerun the experiment with many more guinnea pigs.</p>
-<p><strong>Results</strong></p>
-<p>Question 1: Did guinea pigs that received vitamin C via orange juice grow teeth faster than those who received vitamin C in ascorbic acid? When the two groups’ averages were compared, they were not statistically different, since t-score is not greater than t-critical, the p-value is greater than alpha, and mean difference of zero is within the confidence interval.</p>
-<p>Question 2: However, when the subjects receiving orange juice were tested to see whether their mean was greater than the mean of those subjects receiving ascorbic acid, a small effect was seen, as evidenced by the t-score that is somewhat greater than the t-critical, the p-value which is somewhat less than alpha, and the fact that a mean difference of zero was not in the confidence interval. However, the confidence interval of prospective mean differences did reach close to zero.</p>
-<p>Question 3: The two groups (those receiving 2mm and those receiving 1mm doses) did not have a difference of means that could be explained only by chance. The t-score value was greater than the t-critical value, the p-value was less than the alpha value, and the estimated difference in means ranged from 3.74 length units to 8.99 units.</p>
-<p>Question 4: The results were the same as question 3, but the test indicated that the 1 milligram difference in dosage levels created faster tooth growth.</p>
-<p>Question 5: The two groups (those receiving 2mm and those receiving 1mm doses) did not have a difference of means that could be explained only by chance. The t-score value was greater than the t-critical value, the p-value was less than the alpha value, and the estimated difference in means ranged from 6.28 length units to 11.98 units.</p>
-<p>Question 6: The results were the same as question 5, but the test indicated that the 0.5 milligram difference in dosage levels created faster tooth growth.</p>
+<div id="does-orange-juice-or-ascorbic-acid-and-dosage-levels-effect-how-fast-teeth-grow" class="section level1">
+<h1>Does Orange Juice or Ascorbic Acid and Dosage Levels Effect How Fast Teeth Grow?</h1>
+<p>Russ Robbins <br> <br> <br> <strong>Overview</strong> <br> <br> This analysis assesses whether two variations in the experiment had an effect to the extent that the findings could be expected to be seen in the general population. The results indicate that one variation (dosage level) has an effect. <br> <br> <strong>Subjects</strong> <br> <br> There were six different groups of ten guinea pigs each. <br> <br> <strong>Measurements</strong> <br> <br> The before and after length of teeth in millimeters. <br> <br> <strong>Variations in the Experiment</strong> <br> <br> Variation 1: Vitamin C provided using two differing delivery mechanisms (orange juice and absorbic acid).</p>
+<p>Variation 2: Three different dosage levels (0.5, 1, and 2 milligrams). <br> <br> <strong>Answers</strong> <br> <br> Question 1: Did guinea pigs that received vitamin C via orange juice grow teeth faster than those who received vitamin C in ascorbic acid?</p>
+<p>Answer: It is possible that guinnea pig populations that receive Vitamin C via orange juice or via ascorbic acid vary in their tooth growth rates. However, the Vitamin C delivery mechanism data in this data set do not show a statistically significant difference in the growth rates.</p>
+<p>Question 2: Did guinea pigs that received different dosage levels (0.5, 1, 2 milligrams) grow teeth at different rates?</p>
+<p>Answer: It is entirely possible that guinnea pig populations that are provided Vitamin C at 2 mm per dose have faster growing teeth then those given 1 mm per dose. This relationship also holds between guinea pigs with 1 mm vs. 005 mm dose amounts. <br> <br> <strong>Caveats</strong> <br> <br> Note that these results are tentative because of the following reason. The sample sizes, ten in any group, is very small. Larger sample sizes would have provided more information that could be relied upon to make stronger claims. While the possible error related to accepting the null hypotheses incorrectly (that there wasn’t a difference between any two groups) was considered, the possible error related to accepting the alternative hypothesis incorrectly, was not considered. It was not considered, because the standard method for addressing this risk, is increasing sample size. In this situation, the data was provided to I the analyst, and I did not have access to the experiment which occurred before 1952, which was fourteen years before I was born. Nonetheless, in an ideal world, I would have rerun the experiment with many more guinnea pigs. <br> <br> <strong>Technical Discussion</strong> <br> <br> This section discusses the results after testing six hypotheses. The results are summarized in the table below. <br> <br></p>
 <!-- Start Styles. Move the 'style' tags and everything between them to between the 'head' tags -->
 <style type="text/css">
 .myTable { width:100%;background-color:#eee;border-collapse:collapse; }
@@ -288,18 +280,34 @@ yes
 </td>
 </tr>
 </table>
-<p><br> <br></p>
-<p><strong>Appendix</strong></p>
-<ol style="list-style-type: decimal">
-<li>Load the ToothGrowth data and perform some basic exploratory data analyses</li>
-</ol>
+<center>
+<h4>
+Table 1: Hypotheses Tests Results
+</h4>
+</center>
+<hr />
+<p><strong>Hypothesis 1</strong>: Did guinea pigs that received vitamin C via orange juice grow teeth faster than those who received vitamin C in ascorbic acid?</p>
+<p>No. When the two groups’ averages were compared, they were not statistically different, since t-score is not greater than t-critical, the p-value is greater than alpha, and mean difference of zero is within the confidence interval.</p>
+<p><strong>Hypothesis 2</strong>: Was the mean for the subjects receiving orange juice greater than the mean of those subjects receiving ascorbic acid?</p>
+<p>A small effect was seen, as evidenced by the t-score that is somewhat greater than the t-critical, the p-value which is somewhat less than alpha, and the fact that a mean difference of zero was not in the confidence interval. However, the confidence interval of prospective mean differences did reach close to zero. Since the confidence interval almost included zero, we should be careful about indicating that there is an effect, expecially since Hypothesis 1 was found faulty.</p>
+<p><strong>Hypothesis 3</strong>: Did the groups receiving 2mm and 1mm doses have a difference in mean tooth growth?</p>
+<p>Yes. The two groups (those receiving 2mm and those receiving 1mm doses) did not have a difference of means that could be explained only by chance. The t-score value was greater than the t-critical value, the p-value was less than the alpha value, and the estimated difference in means ranged from 3.74 mm to 8.99 mm.</p>
+<p><strong>Hypothesis 4</strong>: Did the groups receiving 2mm have greater mean tooth growth than subjects that received 1mm doses?</p>
+<p>Yes. The t-score value was greater than the t-critical value, the p-value was less than the alpha value, and the estimated difference in means was greater than 4.17 mm.</p>
+<p><strong>Hypothesis 5</strong>: Did subjects receiving 2mm and those receiving 1mm doses have a statistically significant difference of means?</p>
+<p>Yes. The t-score value was greater than the t-critical value, the p-value was less than the alpha value, and the estimated difference in means ranged from 6.28 mm to 11.98 mm.</p>
+<p><strong>Hypothesis 6</strong>: Did the groups receiving 1mm have greater mean tooth growth than subjects that received 0.5mm doses?</p>
+<p>Yes, and the test indicated that the difference between 0.5 mm and 1 mm doses may have a larger effect than the doses ranging from 1mm to 2mm. <br> <br> <strong>Code</strong> <br> <br> 1. Load the toothgrowth data</p>
+<pre class="r"><code>library(knitr); data(ToothGrowth); attach(ToothGrowth);</code></pre>
+<pre><code>## Warning: package 'knitr' was built under R version 3.2.1</code></pre>
+<pre class="r"><code>unique(supp); unique(dose)</code></pre>
 <pre><code>## [1] VC OJ
 ## Levels: OJ VC</code></pre>
 <pre><code>## [1] 0.5 1.0 2.0</code></pre>
-<p><img src="data:image/png;base64,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" /></p>
 <ol start="2" style="list-style-type: decimal">
 <li>Provide a basic summary of the data.</li>
 </ol>
+<pre class="r"><code>summary(ToothGrowth)</code></pre>
 <pre><code>##       len        supp         dose      
 ##  Min.   : 4.20   OJ:30   Min.   :0.500  
 ##  1st Qu.:13.07   VC:30   1st Qu.:0.500  
@@ -310,7 +318,12 @@ yes
 <ol start="3" style="list-style-type: decimal">
 <li>Use confidence intervals and/or hypothesis tests to compare tooth growth by supp and dose. (Only use the techniques from class, even if there’s other approaches worth considering).</li>
 </ol>
-<p>First Question   |  Null: meanOJ - meanVC = 0   |  Alternative: Mean-OJ - Mean_VC != 0</p>
+<pre class="r"><code>VC&lt;-subset(ToothGrowth,supp==&quot;VC&quot;); OJ&lt;-subset(ToothGrowth,supp==&quot;OJ&quot;)
+Zero.5&lt;-subset(ToothGrowth,dose==0.5); One&lt;-subset(ToothGrowth,dose==1.0)
+Two&lt;-subset(ToothGrowth,dose==2.0)
+meanVC&lt;-mean(VC$len); meanOJ&lt;-mean(OJ$len)
+meanZero.5&lt;-mean(Zero.5$len); meanOne&lt;-mean(One$len); meanTwo&lt;-mean(Two$len)</code></pre>
+<p>Hypothesis 1:   |  Null: meanOJ - meanVC = 0   |  Alternative: Mean-OJ - Mean_VC != 0</p>
 <pre class="r"><code>ojEqVc&lt;-t.test(x=OJ$len,y=VC$len,var.equal=TRUE,conf.level=0.95,paired=FALSE,alternative=c(&quot;two.sided&quot;))
 ojEqVc</code></pre>
 <pre><code>## 
@@ -324,7 +337,7 @@ ojEqVc</code></pre>
 ## sample estimates:
 ## mean of x mean of y 
 ##  20.66333  16.96333</code></pre>
-<p>Second Question   |  Null: meanOJ - meanVC &lt;= 0   |  Alternative: meanOJ - meanVC &gt; 0</p>
+<p>Hypothesis 2:   |  Null: meanOJ - meanVC &lt;= 0   |  Alternative: meanOJ - meanVC &gt; 0</p>
 <pre class="r"><code>ojGtVc&lt;-t.test(x=OJ$len,y=VC$len,var.equal=TRUE,conf.level=0.95,paired=FALSE,alternative=c(&quot;greater&quot;))
 ojGtVc</code></pre>
 <pre><code>## 
@@ -338,7 +351,7 @@ ojGtVc</code></pre>
 ## sample estimates:
 ## mean of x mean of y 
 ##  20.66333  16.96333</code></pre>
-<p>Third Question   |  Null: mean2 - mean1 = 0   |  Alternative: Mean-2 - Mean_1 != 0</p>
+<p>Hypothesis 3:   |  Null: mean2 - mean1 = 0   |  Alternative: Mean-2 - Mean_1 != 0</p>
 <pre class="r"><code>twoEqOne&lt;-t.test(x=Two$len,y=One$len,var.equal=TRUE,conf.level=0.95,paired=FALSE,alternative=c(&quot;two.sided&quot;))
 twoEqOne</code></pre>
 <pre><code>## 
@@ -352,7 +365,7 @@ twoEqOne</code></pre>
 ## sample estimates:
 ## mean of x mean of y 
 ##    26.100    19.735</code></pre>
-<p>Fourth Question   |  Null: mean2 - mean1 &lt;= 0   |  Alternative: Mean-2 - Mean_1 &gt; 0</p>
+<p>Hypothesis 4:   |  Null: mean2 - mean1 &lt;= 0   |  Alternative: Mean-2 - Mean_1 &gt; 0</p>
 <pre class="r"><code>twoGtOne&lt;-t.test(x=Two$len,y=One$len,var.equal=TRUE,conf.level=0.95,paired=FALSE,alternative=c(&quot;greater&quot;))
 twoGtOne</code></pre>
 <pre><code>## 
@@ -366,7 +379,7 @@ twoGtOne</code></pre>
 ## sample estimates:
 ## mean of x mean of y 
 ##    26.100    19.735</code></pre>
-<p>Fifth Question   |  Null: mean-1 - mean-Zero.5 = 0   |  Alternative: Mean-1 - Mean-Zero.5 != 0</p>
+<p>Hypothesis 5:  |  Null: mean-1 - mean-Zero.5 = 0   |  Alternative: Mean-1 - Mean-Zero.5 != 0</p>
 <pre class="r"><code>oneEqZero.5&lt;-t.test(x=One$len,y=Zero.5$len,var.equal=TRUE,conf.level=0.95,paired=FALSE,alternative=c(&quot;two.sided&quot;))
 oneEqZero.5</code></pre>
 <pre><code>## 
@@ -380,7 +393,7 @@ oneEqZero.5</code></pre>
 ## sample estimates:
 ## mean of x mean of y 
 ##    19.735    10.605</code></pre>
-<p>Sixth Question   |  Null: mean-1 - mean-Zero.5 &lt;= 0   |  Alternative: Mean-1 - Mean-Zero.5 &gt; 0</p>
+<p>Hypothesis 6:   |  Null: mean-1 - mean-Zero.5 &lt;= 0   |  Alternative: Mean-1 - Mean-Zero.5 &gt; 0</p>
 <pre class="r"><code>oneGtZero.5&lt;-t.test(x=One$len,y=Zero.5$len,var.equal=TRUE,conf.level=0.95,paired=FALSE,alternative=c(&quot;greater&quot;))
 oneGtZero.5</code></pre>
 <pre><code>## 
@@ -394,6 +407,7 @@ oneGtZero.5</code></pre>
 ## sample estimates:
 ## mean of x mean of y 
 ##    19.735    10.605</code></pre>
+</div>
 
 
 </div>
