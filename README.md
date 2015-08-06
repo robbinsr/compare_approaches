@@ -1,1 +1,1 @@
-You are reading the README.md file in the compare_approaches GitHub repository that stores the files compare_approaches.html as well as compare_approaches.Rmd. Select the compare_approaches link above to view the files.
+You are reading the README.md file in the **comparing** GitHub repository that stores the files comparing.html as well as comparing.Rmd. Select the **comparing** link above to view the files.
