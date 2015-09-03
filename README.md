@@ -1,4 +1,4 @@
-You are reading the README.md file in the **comparing** GitHub repository that stores the files comparing.html as well as comparing.Rmd. Select the **comparing** link above to view the files.
+You are reading the README.md file in the **comparing** GitHub repository associated with Russ Robbins. This repository stores the files comparing.html as well as comparing.Rmd. Select the **comparing** link above to view the files.
 
 This analysis determines whether different approaches for increasing how fast teeth grow actually work. The results indicate that one kind of approach (increasing dosage level) has an effect. 
 
