@@ -137,13 +137,16 @@ This section discusses the results after testing six hypotheses. The results are
 
 No. When the two groups' averages were compared, they were not statistically different, since t-score is not greater than t-critical, the p-value is greater than alpha, and mean difference of zero is within the confidence interval. 
 
+
 **Hypothesis 2**: Was the mean for the subjects receiving orange juice greater than the mean of those subjects receiving ascorbic acid?
 
 A small effect was seen, as evidenced by the t-score that is somewhat greater than the t-critical, the p-value which is somewhat less than alpha, and the fact that a mean difference of zero was not in the confidence interval. However, the confidence interval of prospective mean differences did reach close to zero. Since the confidence interval almost included zero, we should be careful about indicating that there is an effect, expecially since Hypothesis 1 was found faulty.
 
+
 **Hypothesis 3**: Did the groups receiving 2mm and 1mm doses have a difference in mean tooth growth?
 
 Yes. The two groups (those receiving 2mm and those receiving 1mm doses) did not have a difference of means that could be explained only by chance. The t-score value was greater than the t-critical value, the p-value was less than the alpha value, and the estimated difference in means ranged from 3.74 mm to 8.99 mm.
+
 
 **Hypothesis 4**: Did the groups receiving 2mm have greater mean tooth growth than subjects that received 1mm doses?
 
@@ -153,14 +156,19 @@ Yes. The t-score value was greater than the t-critical value, the p-value was le
 
 Yes. The t-score value was greater than the t-critical value, the p-value was less than the alpha value, and the estimated difference in means ranged from 6.28 mm to 11.98 mm.
 
+
 **Hypothesis 6**: Did the groups receiving 1mm have greater mean tooth growth than subjects that received 0.5mm doses?
 
 Yes, and the test indicated that the difference between 0.5 mm and 1 mm doses may have a larger effect than the doses ranging from 1mm to 2mm.
 <br>
 <br>
+
+
 **Code**
 <br>
 <br>
+
+
 1. Load the toothgrowth data
 ```{r}
 library(knitr); data(ToothGrowth); attach(ToothGrowth);
@@ -173,6 +181,7 @@ summary(ToothGrowth)
 ```
 3. Use confidence intervals and/or hypothesis tests to compare tooth growth by supp and dose. (Only use the techniques from class, even if there's other approaches worth considering). 
 
+
 ```{r}
 VC<-subset(ToothGrowth,supp=="VC"); OJ<-subset(ToothGrowth,supp=="OJ")
 Zero.5<-subset(ToothGrowth,dose==0.5); One<-subset(ToothGrowth,dose==1.0)
@@ -181,31 +190,39 @@ meanVC<-mean(VC$len); meanOJ<-mean(OJ$len)
 meanZero.5<-mean(Zero.5$len); meanOne<-mean(One$len); meanTwo<-mean(Two$len)
 ```
 Hypothesis 1: &nbsp;&nbsp;|&nbsp; Null: meanOJ - meanVC =  0 &nbsp;&nbsp;|&nbsp; Alternative: Mean-OJ - Mean_VC != 0
+
 ```{r}
 ojEqVc<-t.test(x=OJ$len,y=VC$len,var.equal=TRUE,conf.level=0.95,paired=FALSE,alternative=c("two.sided"))
 ojEqVc
 ```
 Hypothesis 2: &nbsp;&nbsp;|&nbsp; Null: meanOJ - meanVC <=  0 &nbsp;&nbsp;|&nbsp; Alternative: meanOJ - meanVC >  0
+
 ```{r}
 ojGtVc<-t.test(x=OJ$len,y=VC$len,var.equal=TRUE,conf.level=0.95,paired=FALSE,alternative=c("greater"))
 ojGtVc
 ```
 Hypothesis 3: &nbsp;&nbsp;|&nbsp; Null: mean2 - mean1 =  0 &nbsp;&nbsp;|&nbsp; Alternative: Mean-2 - Mean_1 != 0
+
 ```{r}
 twoEqOne<-t.test(x=Two$len,y=One$len,var.equal=TRUE,conf.level=0.95,paired=FALSE,alternative=c("two.sided"))
 twoEqOne
 ```
 Hypothesis 4: &nbsp;&nbsp;|&nbsp; Null: mean2 - mean1 <=  0 &nbsp;&nbsp;|&nbsp; Alternative: Mean-2 - Mean_1 > 0
+
 ```{r}
 twoGtOne<-t.test(x=Two$len,y=One$len,var.equal=TRUE,conf.level=0.95,paired=FALSE,alternative=c("greater"))
 twoGtOne
 ```
+
 Hypothesis 5:&nbsp;&nbsp;|&nbsp; Null: mean-1 - mean-Zero.5 =  0 &nbsp;&nbsp;|&nbsp; Alternative: Mean-1 - Mean-Zero.5 != 0
+
 ```{r}
 oneEqZero.5<-t.test(x=One$len,y=Zero.5$len,var.equal=TRUE,conf.level=0.95,paired=FALSE,alternative=c("two.sided"))
 oneEqZero.5
+
 ```
 Hypothesis 6: &nbsp;&nbsp;|&nbsp; Null: mean-1 - mean-Zero.5 <=  0 &nbsp;&nbsp;|&nbsp; Alternative: Mean-1 - Mean-Zero.5 > 0
+
 ```{r}
 oneGtZero.5<-t.test(x=One$len,y=Zero.5$len,var.equal=TRUE,conf.level=0.95,paired=FALSE,alternative=c("greater"))
 oneGtZero.5
